@@ -1,18 +1,36 @@
 <template>
-  <a href="#" class="button button--lite"> <slot></slot> <Arrow /></a>
+  <NuxtLink
+    :to="{
+      path: 'detailsPortfolio',
+      query: { category: cat, project: index },
+    }"
+    :style="{ background: option.links.color || '#000' }"
+    class="button button--lite"
+  >
+    <slot></slot>
+  </NuxtLink>
 </template>
 <script>
 export default {
   props: {
-    options: {
-      type: Array,
+    option: {
+      type: Object,
       default() {
-        return []
+        return {}
       },
     },
-  },
-  data() {
-    return {}
+    index: {
+      type: Number,
+      default() {
+        return 0
+      },
+    },
+    cat: {
+      type: String,
+      default() {
+        return ''
+      },
+    },
   },
 }
 </script>
@@ -25,46 +43,27 @@ export default {
   justify-content: space-between;
   align-content: center;
   align-items: center;
-  padding-left: 1.2em;
-  padding-right: 1.2em;
+  text-align: center;
   // border-radius: 4px;
   text-decoration: none;
   text-transform: capitalize;
-  border: 1px solid #919191;
   color: white;
-  width: 270px;
-  height: 60px;
-  margin-right: 1.5em;
+  border-radius: 5px;
   margin-bottom: 1em;
   font-family: 'Heebo', sans-serif !important;
   font-size: 12px;
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
+  padding: 1em;
 }
-@mixin make-btn($name, $color, $textColor: white) {
+@mixin make-btn($name, $color, $textColor: rgba(0, 0, 0, 0.4)) {
   .button--#{$name} {
     color: white;
-    text-shadow: 1px 1px 2px rgba(200, 200, 200, 0.2);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    // background: red;
     svg {
       color: transparent !important;
     }
-    &.active {
-      color: rgb(216, 61, 29) !important;
-      text-shadow: 1px 1px 3px rgba(50, 50, 50, 1);
-
-      //   border-color: rgb(216, 61, 29);
-      //   box-shadow: 1px 1px 5px rgba(200, 200, 200, 0.5);
-
-      svg {
-        color: rgb(216, 61, 29) !important;
-      }
-    }
-    // &:hover {
-    //   color: rgb(216, 61, 29);
-    //   svg {
-    //     color: rgb(216, 61, 29) !important;
-    //   }
-    // }
     &:active {
       position: relative;
       top: 1px;

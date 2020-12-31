@@ -1,47 +1,55 @@
 <template>
-  <div class="container">
-    <h1 class="title">Justin Gaba</h1>
-    <PortfolioSelector image></PortfolioSelector>
-  </div>
+  <transition name="home">
+    <div class="container">
+      <PortfolioSelector></PortfolioSelector>
+    </div>
+  </transition>
 </template>
 
 <script>
-export default {}
+export default {
+  transition: {
+    name: 'home',
+  },
+}
 </script>
 
 <style scoped lang="scss">
+// only for desktop for now,
+@media screen and (min-width: 1008px) {
+  /* during entering and leaving : */
+  .home-enter-active,
+  .home-leave-active {
+    position: absolute;
+    transition: all 0.4s ease;
+  }
+
+  /* entering start */
+  .home-enter {
+    left: -200%;
+  }
+
+  /* entering end */
+  .home-enter-to {
+    left: 0;
+  }
+
+  /* leaving start */
+  .home-leave {
+    left: 0;
+  }
+
+  /* leaving end */
+  .home-leave-to {
+    left: 200%;
+  }
+}
 .container {
   margin: 0 auto;
   min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   justify-content: center;
-  text-align: center;
   flex-wrap: wrap;
-  align-content: flex-start;
-  background: black;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #fff;
-  text-shadow: 1px 1px 1px rgba(100, 100, 100, 0.4);
-  letter-spacing: 1px;
-  height: 125px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>

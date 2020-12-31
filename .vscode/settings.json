@@ -19,5 +19,11 @@
         "sideBar.border": "#fe80cc",
         "tab.activeBorder": "#fe80cc"
     },
-    "peacock.color": "#fe4db7"
+    "peacock.color": "#fe4db7",
+    "cSpell.words": [
+        "Codepen",
+        "Goodreads",
+        "Pyodide",
+        "Vuejs"
+    ]
 }

@@ -1,101 +1,87 @@
 <template>
-  <div class="portfolio-container">
-    <div class="portfolio-selector1 background on"></div>
-    <div class="portfolio-selector2 background off"></div>
+  <div class="portfolio-container-top">
+    <div>
+      <div class="links">
+        <h2>Portfolio</h2>
 
-    <div class="links">
-      <h2>Portfolio</h2>
-
-      <div>
-        <a
-          v-for="(opt, i) in options"
-          :key="i"
-          href="#"
-          :class="'button button--' + opt.short + ' ' + isactive(i)"
-          @click="fire(opt)"
-        >
-          <span class="num"> {{ showNum(i) }}. </span>
-          <span class="short">{{ opt.short }}</span>
-          <font-awesome-icon
-            :style="{ color: 'inherit', paddingLeft: '2px' }"
-            :icon="opt.icon"
-          />
-        </a>
+        <div v-if="options.items.length > 0">
+          <a
+            v-for="(opt, i) in options.items"
+            :key="i"
+            href="#"
+            :class="'button button--' + opt.short + ' ' + isactive(opt.short)"
+            @click="updateSelected(opt.short)"
+          >
+            <span class="num"> {{ showNum(i) }}. </span>
+            <span class="short">{{ opt.short }}</span>
+            <font-awesome-icon
+              :style="{ color: 'inherit', paddingLeft: '2px' }"
+              :icon="opt.icon"
+            />
+          </a>
+        </div>
       </div>
-    </div>
-    <div v-show="portfolioShow" class="portfolio-container2">
-      {{ currentList() }}
-      <PortfolioList :options="currentList()"></PortfolioList>
-      <PortfolioDetails :options="currentList()"></PortfolioDetails>
+      <div
+        v-if="options.items.length > 0 && currentList()"
+        class="portfolio-container-bottom"
+      >
+        <PortfolioList
+          :cat="currentKey"
+          :current="currentList()"
+        ></PortfolioList>
+      </div>
     </div>
   </div>
 </template>
 <script>
 export default {
+  async fetch() {
+    this.portfolioArray = await fetch(
+      'http://0.0.0.0:3000/_content/content'
+    ).then((res) => res.json())
+    this.options = await fetch(
+      'http://0.0.0.0:3000/_content/options'
+    ).then((res) => res.json())
+    /* eslint-disable */
+    console.log('Async fetch call')
+  },
+
   data() {
     return {
       image: '~assets/background.jpg',
-      selectedKey: 'featured',
+      selectedKey: 'frontend',
+      selectedPortfolio: 0,
       portfolioShow: true,
       selectedOptions: [],
-      options: [
-        {
-          icon: ['fas', 'star'],
-          short: 'featured',
-        },
-        {
-          icon: ['fas', 'clipboard-list'],
-          short: 'wip',
-        },
-        {
-          icon: ['fab', 'codepen'],
-          short: 'codepen',
-        },
-        {
-          icon: ['fas', 'bolt'],
-          short: 'stackblitz',
-        },
-        {
-          icon: ['fab', 'github-alt'],
-          short: 'github',
-        },
-      ],
-      portfolioList: {
-        featured: [
-          { name: 'Goodreads API Search' },
-          { name: 'Google Books API Search' },
-          { name: '' },
-          { name: 'angular 1234 project' },
-          { name: 'angular 1234 project' },
-          { name: 'angular 1234 project' },
-        ],
-        wip: [],
-        codepen: [],
-        stackblitz: [],
-        github: [],
-      },
+      options: { items: [] },
+      portfolioArray: {},
     }
   },
   computed: {},
   created() {
-    // this.selectedOptions = this.portfolioList[this.selectedKey]
+    // this.selectedOptions = this.portfolioArray[this.selectedKey]
   },
 
   methods: {
     currentList() {
       const key = this.selectedKey
-      return this.portfolioList[key]
+
+      return this.portfolioArray[key].items
     },
+    currentKey() {
+      return this.selectedKey
+    },
+
     isactive(i) {
-      return i === 0 ? 'active' : 'non-active'
+      return i === this.selectedKey ? 'active' : 'non-active'
     },
-    fire(opt) {
-      this.updateSelected(opt.short)
-    },
+
     updateSelected(key) {
+      // console.log('Updating key: ', key)
       this.selectedKey = key
-      this.selectedOptions = this.portfolioList[key]
+      return this.selectedKey
     },
+
     showNum(i) {
       return i < 10 ? '0' + (i + 1) : i
     },
@@ -104,40 +90,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.background {
-  position: fixed;
-  width: 100%;
-  height: calc(100vh - 125px);
-  -webkit-filter: grayscale(0.75) blur(5px) brightness(50%);
-  -moz-filter: grayscale(0.75) blur(5px) brightness(50%);
-  -o-filter: grayscale(0.75) blur(5px) brightness(50%);
-  -ms-filter: grayscale(0.75) blur(5px) brightness(50%);
-  filter: grayscale(0.75) blur(5px) brightness(50%);
-  -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
-}
-.off {
-  opacity: 0;
-}
-
-.on {
-  bottom: 1%;
-
-  transition: all 0.5s linear;
-}
-.portfolio-selector1 {
-  background-image: url('~assets/background2.jpg');
-  background-size: cover;
-}
-.portfolio-selector2 {
-  background-image: url('~assets/background.jpg');
-  background-size: cover;
-}
 .links {
   position: relative;
   z-index: 2;
   width: 100%;
+  text-align: center;
   h2 {
     color: white;
   }
@@ -152,19 +109,19 @@ export default {
   font-size: 13px;
   font-weight: 400;
 }
-.portfolio-container {
+.portfolio-container-top {
   width: 100%;
   font-family: 'Heebo', sans-serif !important;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  background: transparent;
 }
-.portfolio-container2 {
+.portfolio-container-bottom {
   display: flex;
-  width: 50%;
-  justify-content: center;
-  padding: 1em;
-  margin: 1em;
+  // justify-content: center;
+  padding: 1em 0;
+  margin: 1em 0;
   position: relative;
   z-index: 1;
 }
@@ -177,6 +134,16 @@ export default {
   border: 3px transparent solid;
   font-size: 16px;
   text-transform: capitalize;
+  flex-basis: calc(100%);
+  width: calc(100%);
+  @media (min-width: 500px) {
+    flex-basis: calc(50% - 26px);
+    width: calc(50% - 26px);
+  }
+  @media (min-width: 900px) {
+    width: unset;
+    flex-basis: unset;
+  }
 }
 .button + .button {
   margin-left: 15px;
@@ -208,10 +175,10 @@ export default {
   }
 }
 
-@include make-btn('featured', lighten(royalblue, 5%));
+@include make-btn('frontend', lighten(royalblue, 5%));
 
-@include make-btn('wip', lighten(#3b8070, 10%));
-@include make-btn('codepen', lighten(maroon, 30%));
-@include make-btn('github', #eee, #222);
-@include make-btn('stackblitz', darken(gold, 5%));
+@include make-btn('github', lighten(#3b8070, 10%));
+@include make-btn('experiments', lighten(maroon, 30%));
+@include make-btn('fullstack', darken(#f0ca00, 3%), #222);
+// @include make-btn('stackblitz', darken(gold, 5%));
 </style>
