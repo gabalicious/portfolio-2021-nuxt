@@ -6,7 +6,8 @@
             "use": "@nuxtjs/vercel-builder",
             "config": {
                 "serverFiles": [
-                    "static/**"
+                    "static/**",
+                    "assets/**"
                 ]
             }
         }
