@@ -40,6 +40,9 @@ export default {
     '@nuxtjs/stylelint-module',
     '@nuxtjs/fontawesome',
     '@nuxt/content',
+    '@nuxtjs/axios',
+
+    '@nuxtjs/pwa',
   ],
 
   fontawesome: {
@@ -52,9 +55,9 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    // '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     // '@nuxt/content',
   ],
