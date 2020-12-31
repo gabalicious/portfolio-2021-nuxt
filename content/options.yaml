@@ -1,0 +1,18 @@
+---
+items:
+  - icon:
+      - fas
+      - star
+    short: frontend
+  - icon:
+      - fas
+      - clipboard-list
+    short: github
+  - icon:
+      - fab
+      - codepen
+    short: experiments
+  # - icon:
+  #     - fab
+  #     - github-alt
+  #   short: fullstack

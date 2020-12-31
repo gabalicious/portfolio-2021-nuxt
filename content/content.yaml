@@ -1,0 +1,118 @@
+---
+frontend:
+  items:
+    - name: Google Books API
+      image: "raspberry.svg"
+      title: Google Books API Search
+      description: This is an api search with pagination built with Parcel, SCSS, React.js and Material-UI.  It has testing and pagination.
+      short: React app using Google Books API
+      links:
+        color: "#577ae4"
+        code: https://github.com/gabalicious/react-books
+    - name: Goodreads API
+      image: "goodreads.png"
+      title: Goodreads API Search
+      description: This is an api search with pagination hosted on Codepen using Vue.js.  It has pagination and the backend is build with node.js.
+      short: Vuejs app using Goodreads API
+      links:
+        color: "#577ae4"
+        code: https://codepen.io/gabalicious/pen/mdEvVbb
+        demo: https://codepen.io/gabalicious/full/mdEvVbb
+    - name: Japanese Restaurant
+      image: "sosake.png"
+      short: Frontend for Japanese Restaurant
+      description: This is a demo for a Japanese Restaurant built with Vuejs.
+      links:
+        color: "#577ae4"
+        code: https://github.com/gabalicious/sosake
+        demo: https://sosake.surge.sh/
+    - name: Italian Restaurant
+      image: "havilla.png"
+      short: Frontend for Italian Restaurant
+      description: This is a demo for an Italian Restaurant built with Vuejs.
+      links:
+        color: "#577ae4"
+        code: https://github.com/gabalicious/havilla
+        demo: https://gabalicious.github.io/havilla/
+  long: "Frontend Projects"
+github:
+  items:
+    - name: Dictionary Match Algo
+      image: "forbes.jpg"
+      short: Dictionary Match algo ported to express.js
+      description: Dictionary algo I solved.  I liked the solution so much I wanted to dig deeper by creating a website for it.
+      links:
+        color: "#4ba38f"
+        code: https://github.com/gabalicious/parcel-pyodide
+        demo: https://pyodide.gaba.codes
+    - name: Glass Morphism
+      image: "glass.gif"
+      short: quick prototype to demonstrate glass w/ backgrounds.
+      description: quick prototype to demonstrate glass UI w/ backgrounds.
+      links:
+        color: "#4ba38f"
+        code: https://github.com/gabalicious/glass-morphism
+        demo: https://gabalicious.github.io/glass-morphism/
+    - name: UI Challenge
+      image: "glass.gif"
+      short: Two UI challenges to demonstrate my JS, CSS, and HTML Skills.
+      description: Two UI challenges that demonstrate some of my JS, CSS, and HTML Skills.
+      links:
+        color: "#4ba38f"
+        code: https://codepen.io/gabalicious/pen/LYZMvZo
+        demo: https://codepen.io/gabalicious/pen/wvWNBWo
+    - name: Marvel API Search
+      image: marvel.png
+      short: Vuejs app using Marvels API
+      description: This project's backend is deployed to Heroku to hide authentication keys and consume the api.  On the frontend the project uses Vue 3.  In the future I may add login and be able to naviagte more of the api and also add the abilty to save a charachter from your search to favorites.
+      links:
+        color: "#4ba38f"
+        code: https://stackblitz.com/edit/marvel-api-vue?file=src/App.vue
+        demo: https://marvel-api-vue.stackblitz.io
+  long: "Github"
+experiments:
+  items:
+    - name: ThreeJS Star Wars
+      image: "starwars.png"
+      short: 3d Game built w/ JavaScript.
+      description: My 6 year old nephew really wanted to make a star wars game because that is currently his obsession.  Made a prototype flyer which supports bluetooth gamepad. Used Parcel, Threejs, and React.
+      links:
+        color: "#ff1a1a"
+        code: https://github.com/gabalicious/threejs-starwars
+        demo: https://gabalicious.github.io/threejs-starwars/
+    - name: Raspberry Pi Car
+      image: "raspberry.svg"
+      short: Car built w/ Node.js & Raspberry pi.
+      description: This project required Soldering between Raspberry Pi and stepper motor.  Programmed bluetooth gamepad to control stepper motor using Node.js.
+      links:
+        color: "#ff1a1a"
+        code: https://github.com/
+        demo: https://github.com/
+    - name: Pyodide Vuejs
+      image: "pyodide.png"
+      short: Pyodide Vuejs experiment.
+      description: This is an experiment of using vuejs with Pyodide, an experimental project from Mozilla to use Python entirely in the browser.
+      links:
+        color: "#ff1a1a"
+        code: https://github.com/gabalicious/parcel-pyodide
+        demo: https://pyodide.gaba.codes
+    - name: CV Hero
+      image: cvhero.png
+      short: Vuejs app to generate PDF resumes.
+      description: This is an prototype resume builder with express and vue.js.
+      links:
+        color: "#ff1a1a"
+        code: https://github.com/gabalicious/cvhero
+        demo: https://cvhero.gaba.codes
+  long: "Experiments"
+fullstack:
+  items:
+    - name: Marvel API Search
+      image: marvel.png
+      short: Vuejs app using Marvels API
+      description: This project's backend is deployed to Heroku to hide authentication keys and consume the api.  On the frontend the project uses Vue 3.  In the future I may add login and be able to naviagte more of the api and also add the abilty to save a charachter from your search to favorites.
+      links:
+        color: "gold"
+        code: https://stackblitz.com/edit/marvel-api-vue?file=src/App.vue
+        demo: https://marvel-api-vue.stackblitz.io
+  long: "github"
